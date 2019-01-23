@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1.0.0/needsharebutton.min.css">
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","Muse | Mist":320,"display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="(•ಡ◡ಡ•)  每一个代码段都十分精妙，很多地方都让人意想不到，值得你花时间去学习它们。  言：前方总有一条路,只是有时平坦,有时泥泞。">
+<meta name="keywords" content="Date,ECMAScript6+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="30秒学习JavaScript代码段(Date篇)">
+<meta property="og:url" content="https://chirenmeng.com/2019/01/09/30-seconds-of-code-date/index.html">
+<meta property="og:site_name" content="Chirenmeng">
+<meta property="og:description" content="(•ಡ◡ಡ•)  每一个代码段都十分精妙，很多地方都让人意想不到，值得你花时间去学习它们。  言：前方总有一条路,只是有时平坦,有时泥泞。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/e03b4bf9gy1fynd27klgfj212w0go3z6.jpg">
+<meta property="og:updated_time" content="2019-01-19T11:46:52.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="30秒学习JavaScript代码段(Date篇)">
+<meta name="twitter:description" content="(•ಡ◡ಡ•)  每一个代码段都十分精妙，很多地方都让人意想不到，值得你花时间去学习它们。  言：前方总有一条路,只是有时平坦,有时泥泞。">
+<meta name="twitter:image" content="https://wx4.sinaimg.cn/mw690/e03b4bf9gy1fynd27klgfj212w0go3z6.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://chirenmeng.com/2019/01/09/30-seconds-of-code-date/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>30秒学习JavaScript代码段(Date篇) | Chirenmeng</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xstxhjh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chirenmeng</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">来自程序员的自述！</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirenmeng.com/2019/01/09/30-seconds-of-code-date/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chirenmeng">
+      <meta itemprop="description" content="一个属于前端的博客">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chirenmeng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">30秒学习JavaScript代码段(Date篇)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-09 08:45:45" itemprop="dateCreated datePublished" datetime="2019-01-09T08:45:45+08:00">2019-01-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/30-seconds-of-code/" itemprop="url" rel="index"><span itemprop="name">30-seconds-of-code</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/09/30-seconds-of-code-date/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/09/30-seconds-of-code-date/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+              <div class="post-description"><div style="text-align:center;"> (•ಡ◡ಡ•) <br> 每一个代码段都十分精妙，很多地方都让人意想不到，值得你花时间去学习它们。 <br> 言：前方总有一条路,只是有时平坦,有时泥泞。 </div></div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://wx4.sinaimg.cn/mw690/e03b4bf9gy1fynd27klgfj212w0go3z6.jpg" rel="gallery_cjr9h6m090002gcuyccyrfa6m" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://wx4.sinaimg.cn/mw690/e03b4bf9gy1fynd27klgfj212w0go3z6.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <blockquote class="blockquote-center"><h1 id="Date-篇"><a href="#Date-篇" class="headerlink" title="Date 篇"></a>Date 篇</h1><p>© Chirenmeng</p>
+</blockquote>
+<hr>
+<p>本文译自：<a href="https://github.com/30-seconds/30-seconds-of-code" target="_blank" rel="noopener">30-seconds-of-code</a></p>
+<h1 id="dayOfYear"><a href="#dayOfYear" class="headerlink" title="dayOfYear"></a>dayOfYear</h1><p>获取今天是今年的第几天。</p>
+<p>使用 new date（）和 date.prototype.getfullyear（）将一年中的第一天作为日期对象，从提供的日期中减去该日期，然后除以每天的毫秒数得到结果。使用 math.floor（）将生成的日计数适当地四舍五入为整数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dayOfYear = <span class="function"><span class="params">date</span> =&gt;</span></span><br><span class="line">  <span class="built_in">Math</span>.floor((date - <span class="keyword">new</span> <span class="built_in">Date</span>(date.getFullYear(), <span class="number">0</span>, <span class="number">0</span>)) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">dayOfYear(<span class="keyword">new</span> <span class="built_in">Date</span>()) <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+<h1 id="formatDuration"><a href="#formatDuration" class="headerlink" title="formatDuration"></a>formatDuration</h1><p>将时间戳转为可读日期。</p>
+<p>将 ms 除以适当的值，得到日、小时、分钟、秒和毫秒的适当值。使用 object.entries（）和 array.prototype.filter（）只保留非零值。使用 array.prototype.map（）为每个值创建字符串，并适当地使用复数形式。使用 string.prototype.join（“，”）将值组合成字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> formatDuration = <span class="function"><span class="params">ms</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (ms &lt; <span class="number">0</span>) ms = -ms</span><br><span class="line">  <span class="keyword">const</span> time = &#123;</span><br><span class="line">    day: <span class="built_in">Math</span>.floor(ms / <span class="number">86400000</span>),</span><br><span class="line">    hour: <span class="built_in">Math</span>.floor(ms / <span class="number">3600000</span>) % <span class="number">24</span>,</span><br><span class="line">    minute: <span class="built_in">Math</span>.floor(ms / <span class="number">60000</span>) % <span class="number">60</span>,</span><br><span class="line">    second: <span class="built_in">Math</span>.floor(ms / <span class="number">1000</span>) % <span class="number">60</span>,</span><br><span class="line">    millisecond: <span class="built_in">Math</span>.floor(ms) % <span class="number">1000</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.entries(time)</span><br><span class="line">    .filter(<span class="function"><span class="params">val</span> =&gt;</span> val[<span class="number">1</span>] !== <span class="number">0</span>)</span><br><span class="line">    .map(<span class="function">(<span class="params">[key, val]</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;val&#125;</span> <span class="subst">$&#123;key&#125;</span><span class="subst">$&#123;val !== <span class="number">1</span> ? <span class="string">'s'</span> : <span class="string">''</span>&#125;</span>`</span>)</span><br><span class="line">    .join(<span class="string">', '</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">formatDuration(<span class="number">1001</span>) <span class="comment">// '1 second, 1 millisecond'</span></span><br><span class="line">formatDuration(<span class="number">34325055574</span>) <span class="comment">// '397 days, 6 hours, 44 minutes, 15 seconds, 574 milliseconds'</span></span><br></pre></td></tr></table></figure>
+<h1 id="getColonTimeFromDate"><a href="#getColonTimeFromDate" class="headerlink" title="getColonTimeFromDate"></a>getColonTimeFromDate</h1><p>从日期对象返回格式为 hh:mm:ss 的字符串。</p>
+<p>使用 date.prototype.toTimeString（）和 string.prototype.slice（）获取给定日期对象的 hh:mm:ss 部分。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getColonTimeFromDate = <span class="function"><span class="params">date</span> =&gt;</span> date.toTimeString().slice(<span class="number">0</span>, <span class="number">8</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">getColonTimeFromDate(<span class="keyword">new</span> <span class="built_in">Date</span>()) <span class="comment">// "08:38:00"</span></span><br></pre></td></tr></table></figure>
+<h1 id="getDaysDiffBetweenDates"><a href="#getDaysDiffBetweenDates" class="headerlink" title="getDaysDiffBetweenDates"></a>getDaysDiffBetweenDates</h1><p>返回两个日期之间的差值（以天为单位）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getDaysDiffBetweenDates = <span class="function">(<span class="params">dateInitial, dateFinal</span>) =&gt;</span></span><br><span class="line">  (dateFinal - dateInitial) / (<span class="number">1000</span> * <span class="number">3600</span> * <span class="number">24</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">getDaysDiffBetweenDates(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2017-12-13'</span>), <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2017-12-22'</span>)) <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+<h1 id="getMeridiemSuffixOfInteger"><a href="#getMeridiemSuffixOfInteger" class="headerlink" title="getMeridiemSuffixOfInteger"></a>getMeridiemSuffixOfInteger</h1><p>将整数转换为后缀字符串，并根据其值添加 AM 或 PM。</p>
+<p>使用模运算符（%）和条件检查将整数转换为带 Meridiem 后缀的字符串化 12 小时格式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getMeridiemSuffixOfInteger = <span class="function"><span class="params">num</span> =&gt;</span></span><br><span class="line">  num === <span class="number">0</span> || num === <span class="number">24</span></span><br><span class="line">    ? <span class="number">12</span> + <span class="string">'am'</span></span><br><span class="line">    : num === <span class="number">12</span></span><br><span class="line">    ? <span class="number">12</span> + <span class="string">'pm'</span></span><br><span class="line">    : num &lt; <span class="number">12</span></span><br><span class="line">    ? (num % <span class="number">12</span>) + <span class="string">'am'</span></span><br><span class="line">    : (num % <span class="number">12</span>) + <span class="string">'pm'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">getMeridiemSuffixOfInteger(<span class="number">0</span>) <span class="comment">// "12am"</span></span><br><span class="line">getMeridiemSuffixOfInteger(<span class="number">11</span>) <span class="comment">// "11am"</span></span><br><span class="line">getMeridiemSuffixOfInteger(<span class="number">13</span>) <span class="comment">// "1pm"</span></span><br><span class="line">getMeridiemSuffixOfInteger(<span class="number">25</span>) <span class="comment">// "1pm"</span></span><br></pre></td></tr></table></figure>
+<h1 id="isAfterDate"><a href="#isAfterDate" class="headerlink" title="isAfterDate"></a>isAfterDate</h1><p>检查日期是否在其他日期之后。</p>
+<p>使用大于运算符（&gt;）检查第一个日期是否在第二个日期之后。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isAfterDate = <span class="function">(<span class="params">dateA, dateB</span>) =&gt;</span> dateA &gt; dateB</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">isAfterDate(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">10</span>, <span class="number">21</span>), <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">10</span>, <span class="number">20</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h1 id="isBeforeDate"><a href="#isBeforeDate" class="headerlink" title="isBeforeDate"></a>isBeforeDate</h1><p>检查日期是否早于其他日期。</p>
+<p>使用小于运算符（&lt;）检查第一个日期是否在第二个日期之前。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isBeforeDate = <span class="function">(<span class="params">dateA, dateB</span>) =&gt;</span> dateA &lt; dateB</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">isBeforeDate(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">10</span>, <span class="number">20</span>), <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">10</span>, <span class="number">21</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h1 id="isSameDate"><a href="#isSameDate" class="headerlink" title="isSameDate"></a>isSameDate</h1><p>检查日期是否与其他日期相同。</p>
+<p>使用 date.prototype.toisString（）和严格的相等检查（==）检查第一个日期是否与第二个日期相同。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isSameDate = <span class="function">(<span class="params">dateA, dateB</span>) =&gt;</span> dateA.toISOString() === dateB.toISOStri</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">isSameDate(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">10</span>, <span class="number">20</span>), <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2010</span>, <span class="number">10</span>, <span class="number">20</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h1 id="maxDate"><a href="#maxDate" class="headerlink" title="maxDate"></a>maxDate</h1><p>返回给定日期的最大值。</p>
+<p>使用 math.max.apply（）查找最大日期值，使用 new date（）将其转换为日期对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> maxDate = <span class="function">(<span class="params">...dates</span>) =&gt;</span> <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, ...dates))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line"><span class="keyword">const</span> array = [</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2017</span>, <span class="number">4</span>, <span class="number">13</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2018</span>, <span class="number">2</span>, <span class="number">12</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2016</span>, <span class="number">0</span>, <span class="number">10</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2016</span>, <span class="number">0</span>, <span class="number">9</span>)</span><br><span class="line">]</span><br><span class="line">maxDate(array) <span class="comment">// 2018-03-11T22:00:00.000Z</span></span><br></pre></td></tr></table></figure>
+<h1 id="minDate"><a href="#minDate" class="headerlink" title="minDate"></a>minDate</h1><p>返回给定日期的最小值。</p>
+<p>使用 math.min.apply（）查找最小日期值，使用 new date（）将其转换为日期对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> minDate = <span class="function">(<span class="params">...dates</span>) =&gt;</span> <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Math</span>.min.apply(<span class="literal">null</span>, ...dates))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line"><span class="keyword">const</span> array = [</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2017</span>, <span class="number">4</span>, <span class="number">13</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2018</span>, <span class="number">2</span>, <span class="number">12</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2016</span>, <span class="number">0</span>, <span class="number">10</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2016</span>, <span class="number">0</span>, <span class="number">9</span>)</span><br><span class="line">]</span><br><span class="line">minDate(array) <span class="comment">// 2016-01-08T22:00:00.000Z</span></span><br></pre></td></tr></table></figure>
+<h1 id="tomorrow"><a href="#tomorrow" class="headerlink" title="tomorrow"></a>tomorrow</h1><p>生成明天日期的字符串表示形式。</p>
+<p>使用 new date（）获取今天的日期，使用 date.getDate（）和 date.setDate（）添加一天，并将日期对象转换为字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tomorrow = <span class="function">(<span class="params">long = <span class="literal">false</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> t = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  t.setDate(t.getDate() + <span class="number">1</span>)</span><br><span class="line">  <span class="keyword">const</span> ret = <span class="string">`<span class="subst">$&#123;t.getFullYear()&#125;</span>-<span class="subst">$&#123;<span class="built_in">String</span>(t.getMonth() + <span class="number">1</span>).padStart(</span></span></span><br><span class="line"><span class="string"><span class="subst">    <span class="number">2</span>,</span></span></span><br><span class="line"><span class="string"><span class="subst">    <span class="string">'0'</span></span></span></span><br><span class="line"><span class="string"><span class="subst">  )&#125;</span>-<span class="subst">$&#123;<span class="built_in">String</span>(t.getDate()).padStart(<span class="number">2</span>, <span class="string">'0'</span>)&#125;</span>`</span></span><br><span class="line">  <span class="keyword">return</span> !long ? ret : <span class="string">`<span class="subst">$&#123;ret&#125;</span>T00:00:00`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例 ↓</span></span><br><span class="line">tomorrow() <span class="comment">// 2017-12-27 (if current date is 2017-12-26)</span></span><br><span class="line">tomorrow(<span class="literal">true</span>) <span class="comment">// 2017-12-27T00:00:00 (if current date is 2017-12-26)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li><a href="#date-%E7%AF%87">Date 篇</a></li>
+<li><a href="#dayofyear">dayOfYear</a></li>
+<li><a href="#formatduration">formatDuration</a></li>
+<li><a href="#getcolontimefromdate">getColonTimeFromDate</a></li>
+<li><a href="#getdaysdiffbetweendates">getDaysDiffBetweenDates</a></li>
+<li><a href="#getmeridiemsuffixofinteger">getMeridiemSuffixOfInteger</a></li>
+<li><a href="#isafterdate">isAfterDate</a></li>
+<li><a href="#isbeforedate">isBeforeDate</a></li>
+<li><a href="#issamedate">isSameDate</a></li>
+<li><a href="#maxdate">maxDate</a></li>
+<li><a href="#mindate">minDate</a></li>
+<li><a href="#tomorrow">tomorrow</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Chirenmeng 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Chirenmeng 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Chirenmeng</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://chirenmeng.com/2019/01/09/30-seconds-of-code-date/" title="30秒学习JavaScript代码段(Date篇)">https://chirenmeng.com/2019/01/09/30-seconds-of-code-date/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Date/" rel="tag"># Date</a>
+          
+            <a href="/tags/ECMAScript6/" rel="tag"># ECMAScript6+</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+               <div id="needsharebutton-postbottom">
+                 <span class="btn">
+                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                 </span>
+               </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/07/30-seconds-of-code-array/" rel="next" title="30秒学习JavaScript代码段(Array篇)">
+                <i class="fa fa-chevron-left"></i> 30秒学习JavaScript代码段(Array篇)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/15/微信小程序按需引入外部字体/" rel="prev" title="微信小程序按需引入外部字体">
+                微信小程序按需引入外部字体 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Chirenmeng">
+            
+              <p class="site-author-name" itemprop="name">Chirenmeng</p>
+              <p class="site-description motion-element" itemprop="description">一个属于前端的博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/xstxhjh" title="GitHub &rarr; https://github.com/xstxhjh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/573363596@qq.com" title="E-Mail &rarr; 573363596@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/post/59097cd7a22b9d0065fb61d2" title="https://juejin.im/post/59097cd7a22b9d0065fb61d2" rel="noopener" target="_blank">手摸手，带你用vue撸后台</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/30-seconds/30-seconds-of-code/blob/master/README.md" title="https://github.com/30-seconds/30-seconds-of-code/blob/master/README.md" rel="noopener" target="_blank">30-seconds-of-code</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Date-篇"><span class="nav-number">1.</span> <span class="nav-text">Date 篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dayOfYear"><span class="nav-number">2.</span> <span class="nav-text">dayOfYear</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#formatDuration"><span class="nav-number">3.</span> <span class="nav-text">formatDuration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getColonTimeFromDate"><span class="nav-number">4.</span> <span class="nav-text">getColonTimeFromDate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getDaysDiffBetweenDates"><span class="nav-number">5.</span> <span class="nav-text">getDaysDiffBetweenDates</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getMeridiemSuffixOfInteger"><span class="nav-number">6.</span> <span class="nav-text">getMeridiemSuffixOfInteger</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isAfterDate"><span class="nav-number">7.</span> <span class="nav-text">isAfterDate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isBeforeDate"><span class="nav-number">8.</span> <span class="nav-text">isBeforeDate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isSameDate"><span class="nav-number">9.</span> <span class="nav-text">isSameDate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maxDate"><span class="nav-number">10.</span> <span class="nav-text">maxDate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#minDate"><span class="nav-number">11.</span> <span class="nav-text">minDate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tomorrow"><span class="nav-number">12.</span> <span class="nav-text">tomorrow</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chirenmeng</span>
+</div>
+
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">1:23</span>
+  
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">91k</span>
+  
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1.1/reading_progress.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/valine/1.3.3/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: '6EmaHaRtbd9oAsbHmIwJVqDY-gzGzoHsz',
+        appKey: 'OQO2mSUJRupNdXbuuQm2yeFV',
+        placeholder: '(ฅ´ω`ฅ) 来呀！',
+        avatar:'hide',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+        // ref: https://github.com/ForbesLindesay/unescape-html
+        var unescapeHtml = function(html) {
+          return String(html)
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, '\'')
+            .replace(/&#x3A;/g, ':')
+            // replace all the other &#x; chars
+            .replace(/&#(\d+);/g, function (m, p) { return String.fromCharCode(p); })
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&');
+        };
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                content = unescapeHtml(content);
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1.0.0/needsharebutton.min.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.5.0"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.5.0"></script>
+
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1.0.0/bookmark.min.js"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":130,"height":240,"superSample":2,"hOffset":10,"vOffset":-80},"mobile":{"show":true,"scale":1},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
