@@ -20,8 +20,8 @@
         <category>响应式布局</category>
       </categories>
       <tags>
-        <tag>Grid</tag>
         <tag>弹性布局</tag>
+        <tag>Grid</tag>
       </tags>
   </entry>
   <entry>
@@ -32,8 +32,8 @@
         <category>响应式布局</category>
       </categories>
       <tags>
-        <tag>响应式布局</tag>
         <tag>Grid</tag>
+        <tag>响应式布局</tag>
       </tags>
   </entry>
   <entry>
@@ -67,8 +67,8 @@
         <category>30-seconds-of-code</category>
       </categories>
       <tags>
-        <tag>ECMAScript6+</tag>
         <tag>Date</tag>
+        <tag>ECMAScript6+</tag>
       </tags>
   </entry>
   <entry>
@@ -117,8 +117,8 @@
         <category>ES6+</category>
       </categories>
       <tags>
-        <tag>Async</tag>
         <tag>ECMAScript6+</tag>
+        <tag>Async</tag>
       </tags>
   </entry>
   <entry>
